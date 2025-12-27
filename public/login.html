@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ログイン | 家計簿PoC</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header" id="header">
+        <div class="brand">
+          <h1>家計簿アプリ</h1>
+          <span class="badge">PoC</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <h2>ログイン</h2>
+          <div class="help">ID/Pass を入力してください</div>
+        </div>
+
+        <form id="formLogin" class="grid">
+          <div>
+            <label for="id">ID</label>
+            <input id="id" type="text" autocomplete="username" required />
+          </div>
+          <div>
+            <label for="pass">Password</label>
+            <input id="pass" type="password" autocomplete="current-password" required />
+          </div>
+          <div class="actions">
+            <button class="primary" type="submit">ログイン</button>
+          </div>
+        </form>
+
+        <div id="toast" class="toast"></div>
+        <div class="footer">※ PoC のため ID/Pass は Functions に固定です。</div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { apiFetch, showToast } from "/common.js";
+
+      const form = document.getElementById("formLogin");
+      const toast = document.getElementById("toast");
+
+      // 既にログイン済みなら index へ
+      //(      (a =>  
+        //        = st r   await apiFetch("/a;
+        //     . if (r.ok) l.cati = href = "/inde;
+      //})  ;
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const id = document.getElementById("id").value.trim();
+        const pass = document.getElementById("pass").value;
+
+        const res = await apiFetch("/api/login", { method: "POST", body: { id, pass } });
+        if (!res.ok) {
+          const j = await res.json().catch(() => ({}));
+          showToast(toast, j?.error || "ログインに失敗しました", "error");
+          return;
+        }
+        location.href = "/index.html";
+      });
+    </script>
+  </body>
+</html>

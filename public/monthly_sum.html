@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>月次 | 家計簿PoC</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header" id="header"></div>
+
+      <div class="card">
+        <div class="card-title">
+          <h2>月次集計</h2>
+          <div class="row">
+            <label class="small" style="margin:0;">対象月</label>
+            <input id="month" type="month" />
+            <button class="btn primary" id="btnLoad" type="button">表示</button>
+          </div>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card" style="box-shadow:none;">
+            <div class="card-title">
+              <h2>カテゴリ別小計</h2>
+              <div class="help">自動集計</div>
+            </div>
+            <div id="byCat"></div>
+          </div>
+          <div class="card" style="box-shadow:none;">
+            <div class="card-title">
+              <h2>合計</h2>
+              <div class="help">対象月の合計</div>
+            </div>
+            <div style="font-size:28px; font-weight:700;">
+              <span id="total">0</span> 円
+            </div>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="card-title">
+          <h2>明細一覧（編集可）</h2>
+          <div class="help">行編集→保存 / 削除</div>
+        </div>
+
+        <div style="overflow:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>内容</th>
+                <th>分類</th>
+                <th style="text-align:right;">金額</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+
+        <div id="toast" class="toast"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/monthly_sum.js"></script>
+  </body>
+</html>

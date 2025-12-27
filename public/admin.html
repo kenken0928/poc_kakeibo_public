@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>管理 | 家計簿PoC</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header" id="header"></div>
+
+      <div class="card">
+        <div class="card-title">
+          <h2>分類管理</h2>
+          <div class="help">追加 / 名称変更 / 削除</div>
+        </div>
+
+        <div class="grid cols-2">
+          <div>
+            <label>新規分類</label>
+            <div class="row">
+              <input id="newCat" type="text" maxlength="30" placeholder="例：食費" />
+              <button class="btn primary" id="btnAdd" type="button">追加</button>
+            </div>
+          </div>
+          <div>
+            <label>分類一覧</label>
+            <div id="catList"></div>
+          </div>
+        </div>
+
+        <div id="toast" class="toast"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <h2>一括削除</h2>
+          <div class="help">危険操作</div>
+        </div>
+
+        <div class="grid cols-2">
+          <div>
+            <label>月次一括削除（YYYY-MM）</label>
+            <div class="row">
+              <input id="purgeMonth" type="month" />
+              <button class="btn danger" id="btnPurgeMonth" type="button">この月を削除</button>
+            </div>
+            <div class="small">※ その月の明細が全て削除されます。</div>
+          </div>
+
+          <div>
+            <label>全データ一括削除</label>
+            <div class="row">
+              <button class="btn danger" id="btnPurgeAll" type="button">全削除</button>
+            </div>
+            <div class="small">※ すべての明細・月インデックス等が削除されます。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/admin.js"></script>
+  </body>
+</html>

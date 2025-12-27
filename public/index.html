@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>入力 | 家計簿PoC</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header" id="header"></div>
+
+      <div class="card">
+        <div class="card-title">
+          <h2>購入入力</h2>
+          <div class="help">購入内容/分類/金額/日付 を登録</div>
+        </div>
+
+        <form id="formAdd" class="grid cols-2">
+          <div>
+            <label for="date">日付</label>
+            <input id="date" type="date" required />
+          </div>
+          <div>
+            <label for="amount">金額（円）</label>
+            <input id="amount" type="number" min="0" step="1" required />
+          </div>
+          <div class="cols-2" style="grid-column: 1 / -1;">
+            <label for="item">購入内容（自由入力）</label>
+            <input id="item" type="text" maxlength="200" placeholder="例：ランチ、〇〇の食事代、コンビニなど" required />
+          </div>
+          <div>
+            <label for="category">分類</label>
+            <select id="category" required></select>
+          </div>
+          <div class="actions" style="grid-column: 1 / -1;">
+            <button class="primary" type="submit">登録</button>
+          </div>
+        </form>
+
+        <div id="toast" class="toast"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <h2>今月の明細（最新20件）</h2>
+          <div class="row">
+            <span class="pill" id="pillMonth"></span>
+            <a class="btn" href="/monthly_sum.html">月次画面へ</a>
+          </div>
+        </div>
+
+        <div style="overflow:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>内容</th>
+                <th>分類</th>
+                <th style="text-align:right;">金額</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+
+        <div class="footer small">※ 編集・削除は「月次」画面で行えます。</div>
+      </div>
+    </div>
+
+    <script type="module" src="/index.js"></script>
+  </body>
+</html>

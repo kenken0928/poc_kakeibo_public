@@ -29,7 +29,7 @@ Cloudflare Pages / Pages Functions と KV を使った、
 ---
 
 ## ディレクトリ構成（概要）
-
+```
 /
 ├─ index.html          # 入力画面
 ├─ monthly_sum.html    # 月次集計画面
@@ -54,7 +54,7 @@ Cloudflare Pages / Pages Functions と KV を使った、
 │     ├─ cors.js
 │     └─ resp.js
 └─ README.md
-
+```
 ---
 
 ## セットアップ方法
